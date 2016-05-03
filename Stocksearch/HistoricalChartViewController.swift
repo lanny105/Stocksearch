@@ -17,6 +17,15 @@ class HistoricalChartViewController: UIViewController {
     var Parajson:JSON!
     var transitionManager: TransitionManager!
     
+    var isFirstLoad: Bool = true
+    
+    
+    
+    
+    @IBOutlet weak var NavigationItem: UINavigationItem!
+    
+    
+    
     
     @IBOutlet weak var HistoricalButton: UIButton!
     
@@ -24,9 +33,11 @@ class HistoricalChartViewController: UIViewController {
         super.viewDidLoad()
         self.transitionManager = TransitionManager()
 //        print(Symboljson)
-        print(Symbol)
+        
         //        let transitionManager = TransitionManager()
-
+        
+        self.NavigationItem.title = self.Symbol
+        
         
         HistoricalButton.backgroundColor = UIColor.blueColor()
         HistoricalButton.titleLabel?.textColor = UIColor.whiteColor()

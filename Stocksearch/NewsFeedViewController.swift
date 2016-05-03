@@ -16,14 +16,25 @@ class NewsFeedViewController: UIViewController {
     var Parajson:JSON!
     var transitionManager: TransitionManager!
     
+    var isFirstLoad: Bool = true
+    
     @IBOutlet weak var NewsButton: UIButton!
+    
+    
+    @IBOutlet weak var NavigationItem: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.transitionManager = TransitionManager()
 //        print(Symboljson)
-        print(Symbol)
+        
+        self.NavigationItem.title = self.Symbol
+        
         //        let transitionManager = TransitionManager()
+        
+        print(NewsJson)
+        
+        
 
         NewsButton.backgroundColor = UIColor.blueColor()
         NewsButton.titleLabel?.textColor = UIColor.whiteColor()

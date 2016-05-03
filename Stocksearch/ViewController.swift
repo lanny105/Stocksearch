@@ -74,8 +74,10 @@ class ViewController: UIViewController {
         if segue.identifier == "SegueToCurrentStockControllerView" {
             if let destinationVC = segue.destinationViewController as? CurrentStockViewController {
                 destinationVC.transitioningDelegate = self.transitionManager
-                destinationVC.Symboljson = self.Lookupjson
+//                destinationVC.Symboljson = self.Lookupjson
                 destinationVC.Symbol = self.Symbol
+                
+                
             }
         }
     }
@@ -111,11 +113,11 @@ class ViewController: UIViewController {
 //            print(self.Lookupjson)
             
             if let index = validInput?.uppercaseString.characters.indexOf("-") {
-                print("Index: \(index)")
+//                print("Index: \(index)")
                 
                 self.Symbol = validInput?.substringToIndex(index)
                 
-                print(self.Symbol)
+//                print(self.Symbol)
                 
                 Alamofire.request(.GET, "https://stocksearch-1297.appspot.com/index.php", parameters: ["Symbol": self.Symbol])
                     .responseJSON { response in
@@ -126,6 +128,13 @@ class ViewController: UIViewController {
                             if let value = response.result.value {
                                 
                                 self.Lookupjson = JSON(value)
+                                
+                                
+                                
+                                StockJson = self.Lookupjson["market"]
+                                
+                                NewsJson = self.Lookupjson["newsfeed"]
+                                
                                 
                                 self.performSegueWithIdentifier("SegueToCurrentStockControllerView", sender: self)
                                 

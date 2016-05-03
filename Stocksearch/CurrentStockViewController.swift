@@ -13,7 +13,7 @@ import Alamofire
 
 
 
-class CurrentStockViewController: UIViewController {
+class CurrentStockViewController: UIViewController{
 
     
     
@@ -22,15 +22,43 @@ class CurrentStockViewController: UIViewController {
     var Parajson:JSON!
     var transitionManager: TransitionManager!
     
+    var isFirstLoad: Bool = true
+    
+    @IBOutlet weak var NavigationItem: UINavigationItem!
     
     @IBOutlet weak var CurrentButton: UIButton!
+    
+    
+    var fruits: [String] = []
+    
+    
+    @IBOutlet weak var StockTableView: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.transitionManager = TransitionManager()
 //        print(Symboljson)
-        print(Symbol)
+        
+        
+        
+        self.NavigationItem.title = self.Symbol
+        
+        fruits = ["Apple", "Pineapple", "Orange", "Blackberry", "Banana", "Pear", "Kiwi", "Strawberry", "Mango", "Walnut", "Apricot", "Tomato", "Almond", "Date", "Melon", "Water Melon", "Lemon", "Coconut", "Fig", "Passionfruit", "Star Fruit", "Clementin", "Citron", "Cherry", "Cranberry"]
+        
+
+        
+//        StockTableView.reloadData()
+        
+        print(StockJson)
+        
+        
+        
+
+        
+
+        
+        
 //        let transitionManager = TransitionManager()
         CurrentButton.backgroundColor = UIColor.blueColor()
         CurrentButton.titleLabel?.textColor = UIColor.whiteColor()
@@ -82,6 +110,14 @@ class CurrentStockViewController: UIViewController {
         self.performSegueWithIdentifier("CurrentToNews", sender: self)
     }
 
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 
