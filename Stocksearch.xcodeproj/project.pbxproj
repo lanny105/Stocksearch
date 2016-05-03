@@ -15,6 +15,14 @@
 		1839478A1CD5682F0050728B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183947881CD5682F0050728B /* LaunchScreen.storyboard */; };
 		183947951CD5682F0050728B /* StocksearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947941CD5682F0050728B /* StocksearchTests.swift */; };
 		183947A01CD5682F0050728B /* StocksearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839479F1CD5682F0050728B /* StocksearchUITests.swift */; };
+		183947B41CD5DE490050728B /* Refresh-64.png in Resources */ = {isa = PBXBuildFile; fileRef = 183947B31CD5DE490050728B /* Refresh-64.png */; };
+		183947B61CD6A22F0050728B /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947B51CD6A22F0050728B /* Countries.swift */; };
+		183947B91CD6BD630050728B /* stock.json in Resources */ = {isa = PBXBuildFile; fileRef = 183947B81CD6BD630050728B /* stock.json */; };
+		183947C01CD7FC250050728B /* CurrentStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947BE1CD7FC250050728B /* CurrentStockViewController.swift */; };
+		183947C31CD84EE90050728B /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947C21CD84EE90050728B /* TransitionManager.swift */; };
+		183947C51CD8735F0050728B /* HistoricalChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947C41CD8735F0050728B /* HistoricalChartViewController.swift */; };
+		183947C71CD874B30050728B /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947C61CD874B30050728B /* NewsFeedViewController.swift */; };
+		B8CD1500FB871CC60B6E24B2 /* Pods_Stocksearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79417AE527BDE1C26C2C1D7A /* Pods_Stocksearch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +57,16 @@
 		1839479B1CD5682F0050728B /* StocksearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StocksearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1839479F1CD5682F0050728B /* StocksearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksearchUITests.swift; sourceTree = "<group>"; };
 		183947A11CD5682F0050728B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		183947B31CD5DE490050728B /* Refresh-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Refresh-64.png"; path = "res/Refresh-64.png"; sourceTree = "<group>"; };
+		183947B51CD6A22F0050728B /* Countries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
+		183947B81CD6BD630050728B /* stock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stock.json; sourceTree = "<group>"; };
+		183947BE1CD7FC250050728B /* CurrentStockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentStockViewController.swift; sourceTree = "<group>"; };
+		183947C21CD84EE90050728B /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		183947C41CD8735F0050728B /* HistoricalChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalChartViewController.swift; sourceTree = "<group>"; };
+		183947C61CD874B30050728B /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
+		79417AE527BDE1C26C2C1D7A /* Pods_Stocksearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stocksearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83A71733F29587AA2F94A186 /* Pods-Stocksearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stocksearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stocksearch/Pods-Stocksearch.debug.xcconfig"; sourceTree = "<group>"; };
+		8E1D6EC368A9A7182FC4C1D7 /* Pods-Stocksearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stocksearch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stocksearch/Pods-Stocksearch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8CD1500FB871CC60B6E24B2 /* Pods_Stocksearch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +102,8 @@
 				183947931CD5682F0050728B /* StocksearchTests */,
 				1839479E1CD5682F0050728B /* StocksearchUITests */,
 				1839477A1CD5682F0050728B /* Products */,
+				FD6665827EF2B3D101726FE0 /* Pods */,
+				F2ECDDA94C42F63936567B47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +120,20 @@
 		1839477B1CD5682F0050728B /* Stocksearch */ = {
 			isa = PBXGroup;
 			children = (
+				183947B81CD6BD630050728B /* stock.json */,
+				183947B31CD5DE490050728B /* Refresh-64.png */,
 				1839477C1CD5682F0050728B /* AppDelegate.swift */,
 				1839477E1CD5682F0050728B /* ViewController.swift */,
 				183947801CD5682F0050728B /* Main.storyboard */,
+				183947C61CD874B30050728B /* NewsFeedViewController.swift */,
+				183947BE1CD7FC250050728B /* CurrentStockViewController.swift */,
 				183947861CD5682F0050728B /* Assets.xcassets */,
 				183947881CD5682F0050728B /* LaunchScreen.storyboard */,
 				1839478B1CD5682F0050728B /* Info.plist */,
 				183947831CD5682F0050728B /* Stocksearch.xcdatamodeld */,
+				183947B51CD6A22F0050728B /* Countries.swift */,
+				183947C21CD84EE90050728B /* TransitionManager.swift */,
+				183947C41CD8735F0050728B /* HistoricalChartViewController.swift */,
 			);
 			path = Stocksearch;
 			sourceTree = "<group>";
@@ -128,6 +156,23 @@
 			path = StocksearchUITests;
 			sourceTree = "<group>";
 		};
+		F2ECDDA94C42F63936567B47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				79417AE527BDE1C26C2C1D7A /* Pods_Stocksearch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD6665827EF2B3D101726FE0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				83A71733F29587AA2F94A186 /* Pods-Stocksearch.debug.xcconfig */,
+				8E1D6EC368A9A7182FC4C1D7 /* Pods-Stocksearch.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +180,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 183947A41CD5682F0050728B /* Build configuration list for PBXNativeTarget "Stocksearch" */;
 			buildPhases = (
+				DA26E5CF1B5A11DC901BAA32 /* Check Pods Manifest.lock */,
 				183947751CD5682F0050728B /* Sources */,
 				183947761CD5682F0050728B /* Frameworks */,
 				183947771CD5682F0050728B /* Resources */,
+				DA239B8792ECFC8E775E8C4F /* Embed Pods Frameworks */,
+				AF29D8E83DC90154900A82B7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -238,6 +286,8 @@
 				1839478A1CD5682F0050728B /* LaunchScreen.storyboard in Resources */,
 				183947871CD5682F0050728B /* Assets.xcassets in Resources */,
 				183947821CD5682F0050728B /* Main.storyboard in Resources */,
+				183947B91CD6BD630050728B /* stock.json in Resources */,
+				183947B41CD5DE490050728B /* Refresh-64.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,14 +307,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AF29D8E83DC90154900A82B7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stocksearch/Pods-Stocksearch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA239B8792ECFC8E775E8C4F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stocksearch/Pods-Stocksearch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA26E5CF1B5A11DC901BAA32 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		183947751CD5682F0050728B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183947C51CD8735F0050728B /* HistoricalChartViewController.swift in Sources */,
+				183947C31CD84EE90050728B /* TransitionManager.swift in Sources */,
 				1839477F1CD5682F0050728B /* ViewController.swift in Sources */,
+				183947C01CD7FC250050728B /* CurrentStockViewController.swift in Sources */,
 				183947851CD5682F0050728B /* Stocksearch.xcdatamodeld in Sources */,
+				183947B61CD6A22F0050728B /* Countries.swift in Sources */,
 				1839477D1CD5682F0050728B /* AppDelegate.swift in Sources */,
+				183947C71CD874B30050728B /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +507,7 @@
 		};
 		183947A51CD5682F0050728B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83A71733F29587AA2F94A186 /* Pods-Stocksearch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Stocksearch/Info.plist;
@@ -415,6 +519,7 @@
 		};
 		183947A61CD5682F0050728B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E1D6EC368A9A7182FC4C1D7 /* Pods-Stocksearch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Stocksearch/Info.plist;
@@ -489,6 +594,7 @@
 				183947A61CD5682F0050728B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		183947A71CD5682F0050728B /* Build configuration list for PBXNativeTarget "StocksearchTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +603,7 @@
 				183947A91CD5682F0050728B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		183947AA1CD5682F0050728B /* Build configuration list for PBXNativeTarget "StocksearchUITests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +612,7 @@
 				183947AC1CD5682F0050728B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -1,0 +1,6 @@
+framework module Pods_Stocksearch {
+  umbrella header "Pods-Stocksearch-umbrella.h"
+
+  export *
+  module * { export * }
+}
