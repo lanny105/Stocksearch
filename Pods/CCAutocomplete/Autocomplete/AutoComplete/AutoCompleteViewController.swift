@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import Alamofire
 import SwiftyJSON
+import Alamofire
+
 
 let AutocompleteCellReuseIdentifier = "autocompleteCell"
 

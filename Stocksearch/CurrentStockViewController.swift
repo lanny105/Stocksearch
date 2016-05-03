@@ -23,7 +23,7 @@ class CurrentStockViewController: UIViewController {
     var transitionManager: TransitionManager!
     
     
-    @IBOutlet weak var Current: UIButton!
+    @IBOutlet weak var CurrentButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -32,7 +32,8 @@ class CurrentStockViewController: UIViewController {
 //        print(Symboljson)
         print(Symbol)
 //        let transitionManager = TransitionManager()
-        
+        CurrentButton.backgroundColor = UIColor.blueColor()
+        CurrentButton.titleLabel?.textColor = UIColor.whiteColor()
         
 
         // Do any additional setup after loading the view.

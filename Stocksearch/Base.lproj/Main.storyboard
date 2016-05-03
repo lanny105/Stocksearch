@@ -162,9 +162,16 @@
                                     <action selector="SwitchToCurrent:" destination="uQF-p0-F6H" eventType="touchUpInside" id="hAb-Pi-dq3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Stock Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pG5-XM-BB7">
+                                <rect key="frame" x="66" y="164" width="101" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pG5-XM-BB7" firstAttribute="top" secondItem="A99-cl-0L2" secondAttribute="bottom" constant="15" id="3gQ-uD-IQX"/>
                             <constraint firstItem="rWN-dZ-rWj" firstAttribute="top" secondItem="4FX-4v-YFz" secondAttribute="bottom" constant="45" id="Ck3-gD-22O"/>
                             <constraint firstItem="4FX-4v-YFz" firstAttribute="leading" secondItem="kFD-69-vMU" secondAttribute="leadingMargin" constant="-20" id="MjG-2F-Xzu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="y1r-h7-WZz" secondAttribute="trailing" constant="30" id="TXo-78-ua7"/>
@@ -174,9 +181,11 @@
                             <constraint firstItem="4FX-4v-YFz" firstAttribute="top" secondItem="kFD-69-vMU" secondAttribute="topMargin" id="miu-NB-ZvW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4FX-4v-YFz" secondAttribute="trailing" constant="-20" id="nFP-tg-1JE"/>
                             <constraint firstItem="A99-cl-0L2" firstAttribute="leading" secondItem="kFD-69-vMU" secondAttribute="leadingMargin" constant="30" id="utl-ie-b6e"/>
+                            <constraint firstItem="pG5-XM-BB7" firstAttribute="leading" secondItem="kFD-69-vMU" secondAttribute="leadingMargin" constant="30" id="v26-8a-Zwl"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="CurrentButton" destination="A99-cl-0L2" id="G5d-BL-8n8"/>
                         <segue destination="uQF-p0-F6H" kind="show" identifier="CurrentToHistorical" id="NoW-OZ-vUr"/>
                         <segue destination="vqp-w0-nTk" kind="show" identifier="CurrentToNews" id="akn-Gl-w47"/>
                     </connections>
@@ -254,6 +263,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="NewsButton" destination="Xk1-O0-hwr" id="8vH-LX-KHP"/>
                         <segue destination="uQF-p0-F6H" kind="show" identifier="NewsToHistorical" id="Zwy-IS-pwo"/>
                         <segue destination="uJY-dN-5SL" kind="show" identifier="NewsToCurrent" id="7h5-I9-948"/>
                     </connections>
@@ -331,6 +341,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="HistoricalButton" destination="agP-Kg-ILi" id="dq2-QD-uy5"/>
                         <segue destination="uJY-dN-5SL" kind="show" identifier="HistoricalToCurrent" id="5FV-JL-tIV"/>
                         <segue destination="vqp-w0-nTk" kind="show" identifier="HistoricalToNews" id="RDW-Cq-Vkk"/>
                     </connections>
@@ -419,8 +430,8 @@
         <image name="Refresh-64.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5FV-JL-tIV"/>
+        <segue reference="7h5-I9-948"/>
+        <segue reference="akn-Gl-w47"/>
         <segue reference="NoW-OZ-vUr"/>
-        <segue reference="RDW-Cq-Vkk"/>
     </inferredMetricsTieBreakers>
 </document>

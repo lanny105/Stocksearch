@@ -15,15 +15,21 @@ class HistoricalChartViewController: UIViewController {
     var Symboljson:JSON!
     var Symbol:String!
     var Parajson:JSON!
-    var transitionManager: TransitionManager!    
+    var transitionManager: TransitionManager!
+    
+    
+    @IBOutlet weak var HistoricalButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.transitionManager = TransitionManager()
 //        print(Symboljson)
-//        print(Symbol)
+        print(Symbol)
         //        let transitionManager = TransitionManager()
+
         
+        HistoricalButton.backgroundColor = UIColor.blueColor()
+        HistoricalButton.titleLabel?.textColor = UIColor.whiteColor()
         
         
         // Do any additional setup after loading the view.
