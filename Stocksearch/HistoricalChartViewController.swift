@@ -9,8 +9,9 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
+import JavaScriptCore
 
-class HistoricalChartViewController: UIViewController {
+class HistoricalChartViewController: UIViewController, UIWebViewDelegate {
 
     var Symboljson:JSON!
     var Symbol:String!
@@ -21,6 +22,7 @@ class HistoricalChartViewController: UIViewController {
     
     
     
+    @IBOutlet weak var ChartWebView: UIWebView!
     
     @IBOutlet weak var NavigationItem: UINavigationItem!
     
@@ -32,9 +34,6 @@ class HistoricalChartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.transitionManager = TransitionManager()
-//        print(Symboljson)
-        
-        //        let transitionManager = TransitionManager()
         
         self.NavigationItem.title = self.Symbol
         
@@ -42,9 +41,28 @@ class HistoricalChartViewController: UIViewController {
         HistoricalButton.backgroundColor = UIColor.blueColor()
         HistoricalButton.titleLabel?.textColor = UIColor.whiteColor()
         
+
+        
+        let localfilePath = NSBundle.mainBundle().URLForResource("html", withExtension: "html");
+        let myRequest = NSURLRequest(URL: localfilePath!);
+        ChartWebView.loadRequest(myRequest);
+        ChartWebView.scalesPageToFit = false
+        
+        
+        
+        ChartWebView.delegate = self
         
         // Do any additional setup after loading the view.
     }
+    
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+
+        ChartWebView.stringByEvaluatingJavaScriptFromString("hello(" + "\"" + String(self.Symbol) + "\");")
+    }
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

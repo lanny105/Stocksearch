@@ -9,7 +9,7 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-class NewsFeedViewController: UIViewController {
+class NewsFeedViewController: UIViewController, UITableViewDataSource {
 
     var Symboljson:JSON!
     var Symbol:String!

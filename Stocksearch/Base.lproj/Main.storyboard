@@ -365,18 +365,40 @@
                                     <action selector="HistoricalToCurrent:" destination="uQF-p0-F6H" eventType="touchUpInside" id="dDF-GS-85W"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="139" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YN3-3T-mp4">
+                                <rect key="frame" x="66" y="144" width="468" height="241"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell3" rowHeight="139" id="KMI-My-xSy" customClass="NewsTableViewCell" customModule="Stocksearch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="468" height="139"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KMI-My-xSy" id="3XX-gQ-tlR">
+                                            <rect key="frame" x="0.0" y="0.0" width="468" height="138.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="vqp-w0-nTk" id="ZLK-sF-6Su"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8xf-ia-noc" firstAttribute="top" secondItem="YN3-3T-mp4" secondAttribute="bottom" constant="15" id="0oM-l4-7v9"/>
                             <constraint firstItem="Xk1-O0-hwr" firstAttribute="top" secondItem="wSF-Nu-cGh" secondAttribute="bottom" constant="45" id="4oj-pi-B6Q"/>
                             <constraint firstItem="ATv-mv-oYR" firstAttribute="leading" secondItem="42O-D0-udb" secondAttribute="leadingMargin" constant="30" id="8zA-GI-VXs"/>
+                            <constraint firstItem="YN3-3T-mp4" firstAttribute="centerX" secondItem="42O-D0-udb" secondAttribute="centerX" id="BS0-OI-PFN"/>
                             <constraint firstItem="3Sh-uD-YBW" firstAttribute="top" secondItem="wSF-Nu-cGh" secondAttribute="bottom" constant="45" id="EvX-hb-KuE"/>
+                            <constraint firstItem="YN3-3T-mp4" firstAttribute="leading" secondItem="42O-D0-udb" secondAttribute="leadingMargin" constant="46" id="KXC-gJ-OpU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YN3-3T-mp4" secondAttribute="trailing" constant="46" id="Mk5-IP-gxe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xk1-O0-hwr" secondAttribute="trailing" constant="46" id="Myh-Dg-Ws3"/>
                             <constraint firstItem="3Sh-uD-YBW" firstAttribute="centerX" secondItem="42O-D0-udb" secondAttribute="centerX" id="VTb-eo-9Yq"/>
                             <constraint firstItem="wSF-Nu-cGh" firstAttribute="leading" secondItem="42O-D0-udb" secondAttribute="leadingMargin" constant="-20" id="WFm-Y9-jal"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wSF-Nu-cGh" secondAttribute="trailing" constant="-20" id="Zn6-at-A3L"/>
                             <constraint firstItem="ATv-mv-oYR" firstAttribute="top" secondItem="wSF-Nu-cGh" secondAttribute="bottom" constant="45" id="bO6-bF-CMx"/>
                             <constraint firstItem="wSF-Nu-cGh" firstAttribute="top" secondItem="42O-D0-udb" secondAttribute="topMargin" id="cEl-Xe-A6N"/>
+                            <constraint firstItem="YN3-3T-mp4" firstAttribute="top" secondItem="Xk1-O0-hwr" secondAttribute="bottom" constant="15" id="fBR-a8-Ar0"/>
                         </constraints>
                     </view>
                     <connections>
@@ -444,21 +466,29 @@
                                     <action selector="SwitchToHistorical:" destination="uJY-dN-5SL" eventType="touchUpInside" id="hHP-4J-8lk"/>
                                 </connections>
                             </button>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9DU-OW-jGS">
+                                <rect key="frame" x="66" y="145" width="491" height="435"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="agP-Kg-ILi" firstAttribute="centerX" secondItem="U7Y-2w-z2B" secondAttribute="centerX" id="7Ln-yH-De2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Uq2-ZB-lY6" secondAttribute="trailing" constant="30" id="C5k-36-SF2"/>
+                            <constraint firstItem="9DU-OW-jGS" firstAttribute="top" secondItem="agP-Kg-ILi" secondAttribute="bottom" constant="16" id="CMo-F6-Zlz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vc7-eE-z30" secondAttribute="trailing" constant="-20" id="GxX-tg-2XE"/>
                             <constraint firstItem="Uq2-ZB-lY6" firstAttribute="top" secondItem="Vc7-eE-z30" secondAttribute="bottom" constant="45" id="KeU-ca-eOT"/>
                             <constraint firstItem="agP-Kg-ILi" firstAttribute="top" secondItem="Vc7-eE-z30" secondAttribute="bottom" constant="45" id="QoS-nf-CdP"/>
+                            <constraint firstItem="9DU-OW-jGS" firstAttribute="centerX" secondItem="U7Y-2w-z2B" secondAttribute="centerX" id="ZFW-al-pdM"/>
                             <constraint firstItem="hgi-ge-xNJ" firstAttribute="leading" secondItem="U7Y-2w-z2B" secondAttribute="leadingMargin" constant="30" id="bui-tz-A30"/>
                             <constraint firstItem="hgi-ge-xNJ" firstAttribute="top" secondItem="Vc7-eE-z30" secondAttribute="bottom" constant="45" id="lgx-Pd-9hg"/>
                             <constraint firstItem="Vc7-eE-z30" firstAttribute="top" secondItem="U7Y-2w-z2B" secondAttribute="topMargin" id="niN-0i-W6D"/>
+                            <constraint firstItem="gsi-Xz-2pA" firstAttribute="top" secondItem="9DU-OW-jGS" secondAttribute="bottom" constant="10" id="s17-DX-ZCG"/>
                             <constraint firstItem="Vc7-eE-z30" firstAttribute="leading" secondItem="U7Y-2w-z2B" secondAttribute="leadingMargin" constant="-20" id="whs-Ff-s92"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ChartWebView" destination="9DU-OW-jGS" id="WsI-Xb-CC3"/>
                         <outlet property="HistoricalButton" destination="agP-Kg-ILi" id="dq2-QD-uy5"/>
                         <outlet property="NavigationItem" destination="GPJ-qT-Meq" id="v7b-c6-zc5"/>
                         <segue destination="uJY-dN-5SL" kind="show" identifier="HistoricalToCurrent" id="5FV-JL-tIV"/>
@@ -477,8 +507,8 @@
         <image name="Star-untapped.png" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="geh-Ss-cvu"/>
-        <segue reference="NoW-OZ-vUr"/>
+        <segue reference="7h5-I9-948"/>
         <segue reference="akn-Gl-w47"/>
+        <segue reference="Zwy-IS-pwo"/>
     </inferredMetricsTieBreakers>
 </document>
