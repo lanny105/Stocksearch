@@ -32,10 +32,6 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
     var flag1:Int = 0
     var flag2:Int = 0
     
-    
-    
-    
-    
     var titles: [String] = ["Name","Symbol","Last Price", "Change", "Time and Date", "Market Cap", "Volume", "Change YTD", "High Price", "Low Price", "Opening Price"]
     
     var values : [String] = []
@@ -74,11 +70,7 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         self.values.append(StockJson["Name"].rawString()!)
         self.values.append(StockJson["Symbol"].rawString()!)
         
-        
         self.values.append("$" + rounded(StockJson["LastPrice"].numberValue))
-//        print(rounded(StockJson["LastPrice"].numberValue))
-        
-//        self.values.append(StockJson["Change"].rawString()! + "(" + StockJson["ChangePercent"].rawString()! + ")")
         
         self.values.append(rounded(StockJson["Change"].numberValue) + "(" + rounded(StockJson["ChangePercent"].numberValue) + "%)")
         
@@ -93,8 +85,6 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
 
         
         self.values.append(StockJson["Timestamp"].rawString()!.substringToIndex(StockJson["Timestamp"].rawString()!.startIndex.advancedBy(22)))
-//        dateFormatter.dateFromString(dataString) as NSDate!
-        
         
         
         if StockJson["MarketCap"].intValue  > 1000000000 {
@@ -144,13 +134,6 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         
         prepareStockJson()
         StockTableView.allowsSelection  = false;
-        
-        
-
-        
-        
-
-        
 
         // Do any additional setup after loading the view.
     }
@@ -165,10 +148,6 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         
         // instead of using the default transition animation, we'll ask
         // the segue to use our custom TransitionManager object to manage the transition animation
-        
-        
-        
-        
         
         
         if segue.identifier == "CurrentToHistorical" {
@@ -275,7 +254,6 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
             return 40.0
             
         }
-        
         else {
             return 300.0
         }

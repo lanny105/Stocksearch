@@ -365,21 +365,68 @@
                                     <action selector="HistoricalToCurrent:" destination="uQF-p0-F6H" eventType="touchUpInside" id="dDF-GS-85W"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="139" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YN3-3T-mp4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="198" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YN3-3T-mp4">
                                 <rect key="frame" x="66" y="144" width="468" height="241"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell3" rowHeight="139" id="KMI-My-xSy" customClass="NewsTableViewCell" customModule="Stocksearch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="468" height="139"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell3" rowHeight="198" id="KMI-My-xSy" customClass="NewsTableViewCell" customModule="Stocksearch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="468" height="198"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KMI-My-xSy" id="3XX-gQ-tlR">
-                                            <rect key="frame" x="0.0" y="0.0" width="468" height="138.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="468" height="197.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wd3-y7-V4m">
+                                                    <rect key="frame" x="8" y="8" width="460" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLC-CW-gYu">
+                                                    <rect key="frame" x="8" y="42" width="452" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EpO-Ou-jSp">
+                                                    <rect key="frame" x="8" y="71" width="452" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Loh-JZ-tcW">
+                                                    <rect key="frame" x="8" y="100" width="460" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qLC-CW-gYu" firstAttribute="trailing" secondItem="3XX-gQ-tlR" secondAttribute="trailingMargin" id="9ea-J3-krI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Loh-JZ-tcW" secondAttribute="trailing" id="A8n-TC-Jxg"/>
+                                                <constraint firstItem="Wd3-y7-V4m" firstAttribute="leading" secondItem="3XX-gQ-tlR" secondAttribute="leadingMargin" id="CNq-gZ-XAx"/>
+                                                <constraint firstItem="Wd3-y7-V4m" firstAttribute="top" secondItem="3XX-gQ-tlR" secondAttribute="topMargin" id="EGa-9m-J0C"/>
+                                                <constraint firstItem="qLC-CW-gYu" firstAttribute="top" secondItem="Wd3-y7-V4m" secondAttribute="bottom" constant="15" id="Rzz-1h-isI"/>
+                                                <constraint firstItem="Loh-JZ-tcW" firstAttribute="leading" secondItem="3XX-gQ-tlR" secondAttribute="leadingMargin" id="UA5-r4-ToT"/>
+                                                <constraint firstItem="EpO-Ou-jSp" firstAttribute="trailing" secondItem="3XX-gQ-tlR" secondAttribute="trailingMargin" id="ci9-ya-BzB"/>
+                                                <constraint firstItem="qLC-CW-gYu" firstAttribute="leading" secondItem="3XX-gQ-tlR" secondAttribute="leadingMargin" id="g6G-JY-n9X"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Wd3-y7-V4m" secondAttribute="trailing" id="ogI-Fi-zX0"/>
+                                                <constraint firstItem="EpO-Ou-jSp" firstAttribute="top" secondItem="qLC-CW-gYu" secondAttribute="bottom" constant="15" id="rL1-4X-txR"/>
+                                                <constraint firstItem="Loh-JZ-tcW" firstAttribute="top" secondItem="EpO-Ou-jSp" secondAttribute="bottom" constant="8" id="umm-CI-ajg"/>
+                                                <constraint firstItem="EpO-Ou-jSp" firstAttribute="leading" secondItem="3XX-gQ-tlR" secondAttribute="leadingMargin" id="xtx-S6-Iok"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="NewsDate" destination="Loh-JZ-tcW" id="3pL-ne-25q"/>
+                                            <outlet property="NewsDiscription" destination="qLC-CW-gYu" id="Vta-Ur-WEE"/>
+                                            <outlet property="NewsSource" destination="EpO-Ou-jSp" id="dNP-QG-PDj"/>
+                                            <outlet property="NewsTitle" destination="Wd3-y7-V4m" id="HYc-gC-pdu"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="vqp-w0-nTk" id="ZLK-sF-6Su"/>
+                                    <outlet property="delegate" destination="vqp-w0-nTk" id="kFZ-wM-bgI"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -390,8 +437,6 @@
                             <constraint firstItem="ATv-mv-oYR" firstAttribute="leading" secondItem="42O-D0-udb" secondAttribute="leadingMargin" constant="30" id="8zA-GI-VXs"/>
                             <constraint firstItem="YN3-3T-mp4" firstAttribute="centerX" secondItem="42O-D0-udb" secondAttribute="centerX" id="BS0-OI-PFN"/>
                             <constraint firstItem="3Sh-uD-YBW" firstAttribute="top" secondItem="wSF-Nu-cGh" secondAttribute="bottom" constant="45" id="EvX-hb-KuE"/>
-                            <constraint firstItem="YN3-3T-mp4" firstAttribute="leading" secondItem="42O-D0-udb" secondAttribute="leadingMargin" constant="46" id="KXC-gJ-OpU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YN3-3T-mp4" secondAttribute="trailing" constant="46" id="Mk5-IP-gxe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xk1-O0-hwr" secondAttribute="trailing" constant="46" id="Myh-Dg-Ws3"/>
                             <constraint firstItem="3Sh-uD-YBW" firstAttribute="centerX" secondItem="42O-D0-udb" secondAttribute="centerX" id="VTb-eo-9Yq"/>
                             <constraint firstItem="wSF-Nu-cGh" firstAttribute="leading" secondItem="42O-D0-udb" secondAttribute="leadingMargin" constant="-20" id="WFm-Y9-jal"/>
@@ -399,6 +444,8 @@
                             <constraint firstItem="ATv-mv-oYR" firstAttribute="top" secondItem="wSF-Nu-cGh" secondAttribute="bottom" constant="45" id="bO6-bF-CMx"/>
                             <constraint firstItem="wSF-Nu-cGh" firstAttribute="top" secondItem="42O-D0-udb" secondAttribute="topMargin" id="cEl-Xe-A6N"/>
                             <constraint firstItem="YN3-3T-mp4" firstAttribute="top" secondItem="Xk1-O0-hwr" secondAttribute="bottom" constant="15" id="fBR-a8-Ar0"/>
+                            <constraint firstItem="YN3-3T-mp4" firstAttribute="leading" secondItem="42O-D0-udb" secondAttribute="leadingMargin" constant="20" id="kUc-pC-CfL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YN3-3T-mp4" secondAttribute="trailing" constant="20" id="vfW-5h-oX4"/>
                         </constraints>
                     </view>
                     <connections>
