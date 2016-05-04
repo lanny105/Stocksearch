@@ -13,7 +13,7 @@ import Alamofire
 
 
 
-class CurrentStockViewController: UIViewController{
+class CurrentStockViewController: UIViewController, UITableViewDataSource{
 
     
     
@@ -29,39 +29,95 @@ class CurrentStockViewController: UIViewController{
     @IBOutlet weak var CurrentButton: UIButton!
     
     
-    var fruits: [String] = []
+    var titles: [String] = ["Name","Symbol","Last Price", "Change", "Time and Date", "Market Cap", "Volume", "Change YTD", "High Price", "Low Price", "Opening Price"]
+    
+    var values : [String] = []
+    
     
     
     @IBOutlet weak var StockTableView: UITableView!
     
     
+    
+    
+    @IBOutlet weak var StockChart: UIImageView!
+    
+    
+    
+    
+    
+    
+    
+    func loadImage() {
+        if let url = NSURL(string: "https://chart.finance.yahoo.com/t?s=" + self.Symbol + "&lang=en-US&width=300&height=300") {
+            if let data = NSData(contentsOfURL: url) {
+                StockChart.image = UIImage(data: data)
+            }
+        }
+        
+    }
+    
+    
+    
+    func prepareStockJson() {
+        
+//    {
+//        "Name" : "Alphabet Inc",
+//        "Volume" : 98037,
+//        "LastPrice" : 708.37,
+//        "MSDate" : 42493.665972222,
+//        "MarketCap" : 243049539070,
+//        "ChangeYTD" : 778.01,
+//        "Low" : 707.75,
+//        "Timestamp" : "Tue May 3 15:59:00 UTC-04:00 2016",
+//        "ChangePercentYTD" : -8.9510417603887,
+//        "Symbol" : "GOOGL",
+//        "Status" : "SUCCESS",
+//        "Open" : 711.48,
+//        "ChangePercent" : -0.84545289119693,
+//        "Change" : -6.04,
+//        "High" : 713.2
+//    }
+        
+        
+        
+        self.values.append(StockJson["Name"].rawString()!)
+        self.values.append(StockJson["Symbol"].rawString()!)
+        self.values.append("$" + StockJson["LastPrice"].rawString()!)
+        self.values.append(StockJson["Change"].rawString()! + "(" + StockJson["ChangePercent"].rawString()! + ")")
+        self.values.append(StockJson["Timestamp"].rawString()!)
+        self.values.append(StockJson["MarketCap"].rawString()!)
+        self.values.append(StockJson["Volume"].rawString()!)
+        self.values.append(StockJson["ChangeYTD"].rawString()! + "(" + StockJson["ChangePercentYTD"].rawString()! + ")")
+        self.values.append("$" + StockJson["High"].rawString()!)
+        self.values.append("$" + StockJson["Low"].rawString()!)
+        self.values.append("$" + StockJson["Open"].rawString()!)
+        
+        
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.transitionManager = TransitionManager()
-//        print(Symboljson)
-        
-        
-        
-        self.NavigationItem.title = self.Symbol
-        
-        fruits = ["Apple", "Pineapple", "Orange", "Blackberry", "Banana", "Pear", "Kiwi", "Strawberry", "Mango", "Walnut", "Apricot", "Tomato", "Almond", "Date", "Melon", "Water Melon", "Lemon", "Coconut", "Fig", "Passionfruit", "Star Fruit", "Clementin", "Citron", "Cherry", "Cranberry"]
-        
-
-        
-//        StockTableView.reloadData()
-        
-        print(StockJson)
-        
-        
-        
-
-        
-
-        
-        
-//        let transitionManager = TransitionManager()
+        //        let transitionManager = TransitionManager()
         CurrentButton.backgroundColor = UIColor.blueColor()
         CurrentButton.titleLabel?.textColor = UIColor.whiteColor()
+        self.NavigationItem.title = self.Symbol
+        
+        
+        
+        
+        loadImage()
+        
+        prepareStockJson()
+
+        
+
+        
+        
+
         
 
         // Do any additional setup after loading the view.
@@ -110,12 +166,31 @@ class CurrentStockViewController: UIViewController{
         self.performSegueWithIdentifier("CurrentToNews", sender: self)
     }
 
+
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+    
+    
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = UITableViewCell()
+        
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CurrentStockCell
+        
+        cell.title.text = titles[indexPath.row]
+        
+        cell.value.text = values[indexPath.row]
+        
+
+        
+        return cell
     }
     
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return titles.count
+    }
     
     
     /*
