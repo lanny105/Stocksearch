@@ -134,7 +134,11 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         
         prepareStockJson()
         StockTableView.allowsSelection  = false;
-
+        
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -154,9 +158,9 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
             if let destinationVC = segue.destinationViewController as? HistoricalChartViewController {
                 destinationVC.transitioningDelegate = self.transitionManager
                 destinationVC.Symbol = self.Symbol
+            
             }
         }
-        
         
         if segue.identifier == "CurrentToNews" {
             if let destinationVC = segue.destinationViewController as? NewsFeedViewController {

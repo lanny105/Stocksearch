@@ -27,6 +27,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var LblSelectedStockName: UILabel!
     
+    
+    
     var isFirstLoad: Bool = true
     
 //    let countriesList = countries
@@ -44,10 +46,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refresh.setImage(UIImage(named:"Refresh-64.png"), forState: .Normal)
+//        refresh.setImage(UIImage(named:"Refresh.png"), forState: .Normal)
         self.transitionManager = TransitionManager()
         
         
+        print("hello")
         
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -86,7 +89,6 @@ class ViewController: UIViewController {
     
     
     @IBAction func Getquote(sender: UIButton) {
-        
         
         
         let validInput = Stockinput.text?.stringByTrimmingCharactersInSet(

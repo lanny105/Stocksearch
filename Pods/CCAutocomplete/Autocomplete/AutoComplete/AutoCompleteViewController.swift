@@ -78,7 +78,6 @@ public class AutoCompleteViewController: UIViewController {
                             if let value = response.result.value {
                                 
                                 
-                                
                                 var Lookupjson = JSON(value)
                                 
                                 if Lookupjson["Message"] == JSON.null {
@@ -93,8 +92,7 @@ public class AutoCompleteViewController: UIViewController {
                                         
                                     }
                                 }
-                                
-                            
+    
                                 //                        print(self.Lookupjson)
 
                                 UIView.animateWithDuration(self.animationDuration,
