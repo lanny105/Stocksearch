@@ -27,6 +27,9 @@
 		183947CE1CD92CED0050728B /* Star-untapped.png in Resources */ = {isa = PBXBuildFile; fileRef = 183947CC1CD92CED0050728B /* Star-untapped.png */; };
 		183947D01CD93BE40050728B /* GlobalJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947CF1CD93BE40050728B /* GlobalJson.swift */; };
 		183947D41CD9694E0050728B /* CurrentStockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947D31CD9694E0050728B /* CurrentStockCell.swift */; };
+		183947D61CD98C510050728B /* CurrentStockImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947D51CD98C510050728B /* CurrentStockImageViewCell.swift */; };
+		183947D91CD9CA5F0050728B /* Down-52.png in Resources */ = {isa = PBXBuildFile; fileRef = 183947D71CD9CA5F0050728B /* Down-52.png */; };
+		183947DA1CD9CA5F0050728B /* Up-52.png in Resources */ = {isa = PBXBuildFile; fileRef = 183947D81CD9CA5F0050728B /* Up-52.png */; };
 		B8CD1500FB871CC60B6E24B2 /* Pods_Stocksearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79417AE527BDE1C26C2C1D7A /* Pods_Stocksearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +77,9 @@
 		183947CC1CD92CED0050728B /* Star-untapped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star-untapped.png"; sourceTree = "<group>"; };
 		183947CF1CD93BE40050728B /* GlobalJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalJson.swift; sourceTree = "<group>"; };
 		183947D31CD9694E0050728B /* CurrentStockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentStockCell.swift; sourceTree = "<group>"; };
+		183947D51CD98C510050728B /* CurrentStockImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentStockImageViewCell.swift; sourceTree = "<group>"; };
+		183947D71CD9CA5F0050728B /* Down-52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Down-52.png"; sourceTree = "<group>"; };
+		183947D81CD9CA5F0050728B /* Up-52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Up-52.png"; sourceTree = "<group>"; };
 		79417AE527BDE1C26C2C1D7A /* Pods_Stocksearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stocksearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83A71733F29587AA2F94A186 /* Pods-Stocksearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stocksearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stocksearch/Pods-Stocksearch.debug.xcconfig"; sourceTree = "<group>"; };
 		8E1D6EC368A9A7182FC4C1D7 /* Pods-Stocksearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stocksearch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stocksearch/Pods-Stocksearch.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +147,9 @@
 				183947C91CD924BC0050728B /* Facebook-48.png */,
 				183947C61CD874B30050728B /* NewsFeedViewController.swift */,
 				183947BE1CD7FC250050728B /* CurrentStockViewController.swift */,
+				183947D71CD9CA5F0050728B /* Down-52.png */,
+				183947D81CD9CA5F0050728B /* Up-52.png */,
+				183947D51CD98C510050728B /* CurrentStockImageViewCell.swift */,
 				183947861CD5682F0050728B /* Assets.xcassets */,
 				183947881CD5682F0050728B /* LaunchScreen.storyboard */,
 				1839478B1CD5682F0050728B /* Info.plist */,
@@ -300,8 +309,10 @@
 			files = (
 				1839478A1CD5682F0050728B /* LaunchScreen.storyboard in Resources */,
 				183947871CD5682F0050728B /* Assets.xcassets in Resources */,
+				183947D91CD9CA5F0050728B /* Down-52.png in Resources */,
 				183947CD1CD92CED0050728B /* Star-Filled.png in Resources */,
 				183947821CD5682F0050728B /* Main.storyboard in Resources */,
+				183947DA1CD9CA5F0050728B /* Up-52.png in Resources */,
 				183947CE1CD92CED0050728B /* Star-untapped.png in Resources */,
 				183947B91CD6BD630050728B /* stock.json in Resources */,
 				183947B41CD5DE490050728B /* Refresh-64.png in Resources */,
@@ -384,6 +395,7 @@
 				183947C01CD7FC250050728B /* CurrentStockViewController.swift in Sources */,
 				183947D01CD93BE40050728B /* GlobalJson.swift in Sources */,
 				183947851CD5682F0050728B /* Stocksearch.xcdatamodeld in Sources */,
+				183947D61CD98C510050728B /* CurrentStockImageViewCell.swift in Sources */,
 				183947B61CD6A22F0050728B /* Countries.swift in Sources */,
 				1839477D1CD5682F0050728B /* AppDelegate.swift in Sources */,
 				183947D41CD9694E0050728B /* CurrentStockCell.swift in Sources */,

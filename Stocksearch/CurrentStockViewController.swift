@@ -13,7 +13,7 @@ import Alamofire
 
 
 
-class CurrentStockViewController: UIViewController, UITableViewDataSource{
+class CurrentStockViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
     
     
@@ -29,6 +29,13 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource{
     @IBOutlet weak var CurrentButton: UIButton!
     
     
+    var flag1:Int = 0
+    var flag2:Int = 0
+    
+    
+    
+    
+    
     var titles: [String] = ["Name","Symbol","Last Price", "Change", "Time and Date", "Market Cap", "Volume", "Change YTD", "High Price", "Low Price", "Opening Price"]
     
     var values : [String] = []
@@ -39,24 +46,9 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource{
     
     
     
-    
-    @IBOutlet weak var StockChart: UIImageView!
-    
-    
-    
-    
-    
-    
-    
-    func loadImage() {
-        if let url = NSURL(string: "https://chart.finance.yahoo.com/t?s=" + self.Symbol + "&lang=en-US&width=300&height=300") {
-            if let data = NSData(contentsOfURL: url) {
-                StockChart.image = UIImage(data: data)
-            }
-        }
-        
+    func rounded(a:NSNumber) -> String {
+        return String(Double(round(100*Double(a))/100))
     }
-    
     
     
     func prepareStockJson() {
@@ -79,19 +71,63 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource{
 //        "High" : 713.2
 //    }
         
-        
-        
         self.values.append(StockJson["Name"].rawString()!)
         self.values.append(StockJson["Symbol"].rawString()!)
-        self.values.append("$" + StockJson["LastPrice"].rawString()!)
-        self.values.append(StockJson["Change"].rawString()! + "(" + StockJson["ChangePercent"].rawString()! + ")")
-        self.values.append(StockJson["Timestamp"].rawString()!)
-        self.values.append(StockJson["MarketCap"].rawString()!)
+        
+        
+        self.values.append("$" + rounded(StockJson["LastPrice"].numberValue))
+//        print(rounded(StockJson["LastPrice"].numberValue))
+        
+//        self.values.append(StockJson["Change"].rawString()! + "(" + StockJson["ChangePercent"].rawString()! + ")")
+        
+        self.values.append(rounded(StockJson["Change"].numberValue) + "(" + rounded(StockJson["ChangePercent"].numberValue) + "%)")
+        
+        if Double(StockJson["ChangePercent"].numberValue) < 0 {
+            flag1 = -1
+        }
+        
+        if Double(StockJson["ChangePercent"].numberValue) > 0 {
+            flag1 = 1
+        }
+        
+
+        
+        self.values.append(StockJson["Timestamp"].rawString()!.substringToIndex(StockJson["Timestamp"].rawString()!.startIndex.advancedBy(22)))
+//        dateFormatter.dateFromString(dataString) as NSDate!
+        
+        
+        
+        if StockJson["MarketCap"].intValue  > 1000000000 {
+            self.values.append(rounded(StockJson["MarketCap"].intValue/1000000000) + " Billion")
+        }
+        
+        else if StockJson["MarketCap"].intValue  > 1000000{
+            self.values.append(rounded(StockJson["MarketCap"].intValue/1000000) + " Million")
+
+        }
+        
+        else {
+            self.values.append(rounded(StockJson["MarketCap"].intValue))
+        }
+        
+        
         self.values.append(StockJson["Volume"].rawString()!)
-        self.values.append(StockJson["ChangeYTD"].rawString()! + "(" + StockJson["ChangePercentYTD"].rawString()! + ")")
-        self.values.append("$" + StockJson["High"].rawString()!)
-        self.values.append("$" + StockJson["Low"].rawString()!)
-        self.values.append("$" + StockJson["Open"].rawString()!)
+        
+        self.values.append(rounded(StockJson["ChangeYTD"].intValue) + "(" + rounded(StockJson["ChangePercentYTD"].intValue) + "%)")
+        
+        
+        if Double(StockJson["ChangePercentYTD"].numberValue) < 0 {
+            flag2 = -1
+        }
+        
+        if Double(StockJson["ChangePercentYTD"].numberValue) > 0 {
+            flag2 = 1
+        }
+        
+        
+        self.values.append("$" + rounded(StockJson["High"].numberValue))
+        self.values.append("$" + rounded(StockJson["Low"].numberValue))
+        self.values.append("$" + rounded(StockJson["Open"].numberValue))
         
         
     }
@@ -106,13 +142,9 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource{
         CurrentButton.titleLabel?.textColor = UIColor.whiteColor()
         self.NavigationItem.title = self.Symbol
         
-        
-        
-        
-        loadImage()
-        
         prepareStockJson()
-
+        StockTableView.allowsSelection  = false;
+        
         
 
         
@@ -169,28 +201,96 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource{
 
     
     
-    
+    func imageWithImage(image:UIImage,scaledToSize newSize:CGSize)->UIImage{
+        
+        UIGraphicsBeginImageContext( newSize )
+        image.drawInRect(CGRect(x: 0,y: 0,width: newSize.width,height: newSize.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage.imageWithRenderingMode(.AlwaysTemplate)
+    }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        let cell = UITableViewCell()
         
+        if indexPath.row < titles.count {
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CurrentStockCell
+            
+            cell.title.text = titles[indexPath.row]
+            
+            cell.value.text = values[indexPath.row]
+            
+            
+            if indexPath.row == 3 {
+                if flag1 == 1 {
+                    let imageName = "Up-52.png"
+                    cell.Indicator.image = UIImage(named: imageName)
+                }
+                
+                if flag1 == -1 {
+                    let imageName = "Down-52.png"
+                    cell.Indicator.image = UIImage(named: imageName)
+                }
+            }
+
+            if indexPath.row == 7 {
+                if flag2 == 1 {
+                    let imageName = "Up-52.png"
+                    cell.Indicator.image = UIImage(named: imageName)
+                }
+                
+                if flag2 == -1 {
+                    let imageName = "Down-52.png"
+                    cell.Indicator.image = UIImage(named: imageName)
+                }
+            }
+            
+            
+            
+            return cell
+        }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CurrentStockCell
-        
-        cell.title.text = titles[indexPath.row]
-        
-        cell.value.text = values[indexPath.row]
-        
+        else {
+//            StockTableView. = 300.0
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell2", forIndexPath: indexPath) as! CurrentStockImageViewCell
+            
+            if let url = NSURL(string: "https://chart.finance.yahoo.com/t?s=" + self.Symbol + "&lang=en-US&width=300&height=250") {
+                if let data = NSData(contentsOfURL: url) {
+                    cell.StockImage.image = UIImage(data: data)                }
+            }
+            
+            
+            return cell
+
+        }
 
         
-        return cell
+        
     }
+    
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row < titles.count {
+            return 40.0
+            
+        }
+        
+        else {
+            return 300.0
+        }
+        
+        
+    }
+
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titles.count
+        return titles.count+1
     }
+    
+    
+    
     
     
     /*
