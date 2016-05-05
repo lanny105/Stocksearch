@@ -44,7 +44,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var transitionManager: TransitionManager!
     
     
-    var Symbols:[String] = ["AAPL","GOOGL","MSFT"]
+//    var Symbols:[String] = ["AAPL","GOOGL","MSFT"]
     
     
     
@@ -55,7 +55,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     
-    var JSONlist: [JSON] = [JSON](count: 3, repeatedValue: JSON.null)
+    var JSONlist: [JSON] = []
     var someDict = [String: Int]()
     
     
@@ -66,7 +66,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
 //        refresh.setImage(UIImage(named:"Refresh.png"), forState: .Normal)
         self.transitionManager = TransitionManager()
+        
+        
+        print((NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString))
+        
+        
+        let (tables, _) = SD.existingTables()
+        
+        if let _ = tables.indexOf("favoritelist"){
+            
+            print("Database exists!")
+            
+        }
+        
+        else {
+            if let err = SD.createTable("favoritelist", withColumnNamesAndTypes: ["Symbol": .StringVal]) {
+                //there was an error during this function, handle it here
+            } else {
+                //no error, the table was created successfully
+            }
+        }
+        
+        
+        favouristList = getSumbolList()
+        
         getFavouriteList()
+        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -78,6 +103,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func unwindToViewController (sender: UIStoryboardSegue){
         
+    }
+    
+    
+    
+    func getSumbolList() -> [String] {
+        
+        
+        var SymbolList: [String] = []
+        
+        
+        var (resultSet, err) = SD.executeQuery("select Symbol from favoritelist;")
+        
+        if err != nil {
+            //there was an error during the query, handle it here
+        } else {
+            
+            for row in resultSet {
+                print(row)
+                if let sym = row["Symbol"]?.asString() {
+                    SymbolList.append(sym)
+                }
+                
+            }
+            
+        }
+        
+        return SymbolList
     }
     
     
@@ -110,26 +162,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
 //        StockJson = self.Lookupjson["market"]
         
-        
-        
-        self.JSONlist = [JSON](count: 3, repeatedValue: JSON.null)
+        self.JSONlist = [JSON](count: favouristList.count, repeatedValue: JSON.null)
 
         var count = 0
         
         
-        for sym in Symbols {
+        for sym in favouristList {
             someDict[sym] = count
             count+=1
         }
-        
-
         
         
         var count2 = 0
         
         
         
-        for sym in Symbols {
+        for sym in favouristList {
 
             
             Alamofire.request(.GET, "https://stocksearch-1297.appspot.com/index.php", parameters: ["Symbol": sym])
@@ -146,12 +194,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //                            print(temp)
                             
                             self.JSONlist[self.someDict[temp["market"]["Symbol"].rawString()!]!] = temp["market"]
+                            
 //                            print(self.JSONlist.count)
 //                            self.FavouriteTableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.JSONlist.count, inSection: 0)], withRowAnimation: .Automatic)
                         }
                         
                         
-                        if count2 == self.Symbols.count {
+                        if count2 == favouristList.count {
                             self.FavouriteTableView.reloadData()
                             print("load了！")
                         }
@@ -363,8 +412,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            Symbols.removeAtIndex(indexPath.row)
+            favouristList.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+            let str = "delete from favoritelist where Symbol = '" + Symbol + "';"
+            SD.executeQuery(str)
         }
     }
     
@@ -381,7 +433,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Symbols.count
+        return favouristList.count
     }
     
     
@@ -390,10 +442,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCellWithIdentifier("cell4", forIndexPath: indexPath) as! FavouriteTableViewCell
         
         
-        if JSONlist.count < Symbols.count {
+        if JSONlist.count < favouristList.count {
             
 //            print("xixi")
-            cell.Symbol.text = Symbols[indexPath.row]
+            cell.Symbol.text = favouristList[indexPath.row]
             return cell
             
         }
@@ -444,7 +496,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print(indexPath.row)
         
-        Symbol = Symbols[indexPath.row]
+        Symbol = favouristList[indexPath.row]
         move(Symbol)
     }
     

@@ -377,6 +377,7 @@
                     <connections>
                         <outlet property="CurrentButton" destination="A99-cl-0L2" id="G5d-BL-8n8"/>
                         <outlet property="NavigationItem" destination="hGq-Nk-ygC" id="dGZ-xU-eB4"/>
+                        <outlet property="Starbutton" destination="uHE-Cy-8di" id="0oN-X7-LvY"/>
                         <outlet property="StockTableView" destination="5hz-mh-63s" id="lO0-dI-03I"/>
                         <segue destination="uQF-p0-F6H" kind="show" identifier="CurrentToHistorical" id="NoW-OZ-vUr"/>
                         <segue destination="vqp-w0-nTk" kind="show" identifier="CurrentToNews" id="akn-Gl-w47"/>

@@ -41,16 +41,52 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
     
     var values : [String] = []
     
+    var flag3: Bool = false
+    
+    
+    
     
     
     @IBOutlet weak var StockTableView: UITableView!
     
     
+    @IBOutlet weak var Starbutton: UIButton!
     
     @IBAction func StarStock(sender: UIButton) {
         
         
 //        StockTableView.reloadData()
+        
+
+        
+        
+        
+        if !flag3  {
+
+            let str = "insert into favoritelist ('Symbol') values('" + Symbol + "');"
+//            print(str)
+            SD.executeQuery(str)
+            flag3 = true
+            let image = UIImage(named: "Star-Filled.png")! as UIImage
+            Starbutton.setBackgroundImage(image, forState: UIControlState.Normal)
+            favouristList.append(Symbol)
+            
+        }
+        
+        else {
+            let str = "delete from favoritelist where Symbol = '" + Symbol + "';"
+            SD.executeQuery(str)
+//            print(str)
+            flag3 = false
+            let image = UIImage(named: "Star-untapped.png")! as UIImage
+            Starbutton.setBackgroundImage(image, forState: UIControlState.Normal)
+            favouristList.removeAtIndex(favouristList.indexOf(Symbol)!)
+            
+        }
+        
+        
+        print(favouristList)
+        
         
     }
     
@@ -132,7 +168,6 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         self.values.append("$" + rounded(StockJson["Low"].numberValue))
         self.values.append("$" + rounded(StockJson["Open"].numberValue))
         
-        
     }
     
     
@@ -148,8 +183,19 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         prepareStockJson()
         StockTableView.allowsSelection  = false;
         
+        if favouristList.indexOf(Symbol) != nil {
+            
+            
+            flag3 = true
+            let image = UIImage(named: "Star-Filled.png")! as UIImage
+            Starbutton.setBackgroundImage(image, forState: UIControlState.Normal)
+        }
         
-        
+        else {
+            flag3 = false
+            let image = UIImage(named: "Star-untapped.png")! as UIImage
+            Starbutton.setBackgroundImage(image, forState: UIControlState.Normal)
+        }
         
         
         // Do any additional setup after loading the view.
@@ -181,9 +227,8 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
 //                destinationVC.Symbol = Symbol
             }
         }
-        
     }
-
+    
     
     @IBAction func SwitchToHistorical(sender: UIButton) {
         self.performSegueWithIdentifier("CurrentToHistorical", sender: self)
@@ -255,7 +300,6 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
                 if let data = NSData(contentsOfURL: url) {
                     cell.StockImage.image = UIImage(data: data)                }
             }
-            
             
             return cell
 

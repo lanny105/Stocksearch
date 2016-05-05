@@ -17,6 +17,9 @@ var NewsJson:JSON! = []
 
 var Symbol:String = ""
 
+var favouristList: [String] = []
+
+
 
 
 
