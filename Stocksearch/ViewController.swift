@@ -17,7 +17,7 @@ import SpriteKit
 
 
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
     var timer: NSTimer!
     
@@ -40,7 +40,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func Switched(sender: AnyObject) {
         
         if Myswitch.on {
-            timer = NSTimer.scheduledTimerWithTimeInterval(5, target:self, selector: Selector("getFavouriteList"), userInfo: nil, repeats: true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(10, target:self, selector: Selector("getFavouriteList"), userInfo: nil, repeats: true)
         }
         
         else {
@@ -115,6 +115,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         getFavouriteList()
         
+        self.Stockinput.delegate = self
+
+        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -128,6 +131,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
     
     func getSumbolList() -> [String] {
@@ -190,12 +197,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func getFavouriteList() {
         
 //        StockJson = self.Lookupjson["market"]
-        var actInd : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
-        actInd.center = self.FavouriteTableView.center
+        var actInd : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(115,390, 150, 150)) as UIActivityIndicatorView
+//        actInd.center = self.view.center
+        
+        
+        
         actInd.hidesWhenStopped = true
-        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+        actInd.color = UIColor(red: 46.0/255, green: 204.0/255, blue: 113.0/255, alpha: 1.0)
         view.addSubview(actInd)
-        actInd.startAnimating()
+        
         
         self.JSONlist = [JSON](count: favouristList.count, repeatedValue: JSON.null)
 
@@ -207,37 +218,35 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             count+=1
         }
         
+//        print(someDict)
+        
         
         var count2 = 0
         
         
         
+        
         for sym in favouristList {
+            actInd.startAnimating()
 
             
-            Alamofire.request(.GET, "https://stocksearch-1297.appspot.com/index.php", parameters: ["Symbol": sym])
+            Alamofire.request(.GET, "http://www.mobileserver-1300.appspot.com/index.php", parameters: ["Symbol": sym])
                 .responseJSON { response in
                     
                     switch response.result {
                     case .Success:
                         
-                        
-                        
                         if let value = response.result.value {
                             let temp = JSON(value)
                             count2+=1
-//                            print(temp)
+                            //
                             
-                            self.JSONlist[self.someDict[temp["market"]["Symbol"].rawString()!]!] = temp["market"]
-                            
-//                            print(self.JSONlist.count)
-//                            self.FavouriteTableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.JSONlist.count, inSection: 0)], withRowAnimation: .Automatic)
+                            self.JSONlist[self.someDict[temp["Symbol"].rawString()!]!] = temp["market"]
                         }
-                        
                         
                         if count2 == favouristList.count {
                             self.FavouriteTableView.reloadData()
-//                            print("load了！")
+//                            print(self.JSONlist)
                             actInd.stopAnimating()
                         }
                         
@@ -248,6 +257,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
         }
+        self.FavouriteTableView.reloadData()
         
     }
     
@@ -257,7 +267,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         
         
-        Alamofire.request(.GET, "https://stocksearch-1297.appspot.com/index.php", parameters: ["Symbol": input])
+        Alamofire.request(.GET, "http://www.mobileserver-1300.appspot.com/index.php", parameters: ["Symbol": input])
             .responseJSON { response in
                 
                 switch response.result {
@@ -324,7 +334,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
 //                print(self.Symbol)
                 
-                Alamofire.request(.GET, "https://stocksearch-1297.appspot.com/index.php", parameters: ["Symbol": Symbol])
+                Alamofire.request(.GET, "http://www.mobileserver-1300.appspot.com/index.php", parameters: ["Symbol": Symbol])
                     .responseJSON { response in
                         
                         switch response.result {
@@ -356,7 +366,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         
-        Alamofire.request(.GET, "https://stocksearch-1297.appspot.com/index.php", parameters: ["input": validInput!])
+        Alamofire.request(.GET, "http://www.mobileserver-1300.appspot.com/index.php", parameters: ["input": validInput!])
             .responseJSON { response in
                 
                 switch response.result {
@@ -448,11 +458,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            
+            let str = "delete from favoritelist where Symbol = '" + favouristList[indexPath.row] + "';"
+            SD.executeQuery(str)
+            
+            
             favouristList.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             
-            let str = "delete from favoritelist where Symbol = '" + Symbol + "';"
-            SD.executeQuery(str)
+
         }
     }
     

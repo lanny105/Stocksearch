@@ -69,7 +69,20 @@ class NewsFeedViewController: UIViewController, UITableViewDataSource, UITableVi
                 destinationVC.transitioningDelegate = self.transitionManager
             }
         }
+        
+        if segue.identifier == "NewsToMain" {
+            if let destinationVC = segue.destinationViewController as? ViewController {
+                destinationVC.getFavouriteList()
+                destinationVC.transitioningDelegate = self.transitionManager
+            }
+        }
     }
+    
+
+    
+    
+    
+    
     
     func parsejson() {
         

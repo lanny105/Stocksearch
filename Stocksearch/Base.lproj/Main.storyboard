@@ -253,7 +253,10 @@
                                     <constraint firstAttribute="height" constant="33" id="vv8-sx-RUZ"/>
                                     <constraint firstAttribute="width" constant="33" id="zQp-RL-XLX"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="Facebook-48.png"/>
+                                <state key="normal" title="Button" image="Facebook-48.png" backgroundImage="Facebook-48.png"/>
+                                <connections>
+                                    <action selector="ShareFB:" destination="uJY-dN-5SL" eventType="touchUpInside" id="gsc-5K-hZs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHE-Cy-8di">
                                 <rect key="frame" x="519" y="159" width="33" height="33"/>
@@ -380,6 +383,7 @@
                     </view>
                     <connections>
                         <outlet property="CurrentButton" destination="A99-cl-0L2" id="G5d-BL-8n8"/>
+                        <outlet property="FBbutton" destination="hkF-6G-rRq" id="l4z-wI-D8x"/>
                         <outlet property="NavigationItem" destination="hGq-Nk-ygC" id="dGZ-xU-eB4"/>
                         <outlet property="Starbutton" destination="uHE-Cy-8di" id="0oN-X7-LvY"/>
                         <outlet property="StockTableView" destination="5hz-mh-63s" id="lO0-dI-03I"/>
@@ -431,7 +435,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="&lt;Back"/>
                                                 <connections>
-                                                    <segue destination="UWa-KG-MLO" kind="unwind" unwindAction="unwindToViewController:" id="rGV-ig-aMi"/>
+                                                    <segue destination="UWa-KG-MLO" kind="unwind" identifier="NewsToMain" unwindAction="unwindToViewController:" id="rGV-ig-aMi"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -579,7 +583,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="&lt;Back"/>
                                                 <connections>
-                                                    <segue destination="xHu-g5-oPM" kind="unwind" unwindAction="unwindToViewController:" id="SE7-06-fci"/>
+                                                    <segue destination="xHu-g5-oPM" kind="unwind" identifier="HistoricalToMain" unwindAction="unwindToViewController:" id="SE7-06-fci"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>

@@ -85,11 +85,19 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Stocksearch/Alamofire.framework"
+  install_framework "Pods-Stocksearch/Bolts.framework"
   install_framework "Pods-Stocksearch/CCAutocomplete.framework"
+  install_framework "Pods-Stocksearch/FBSDKCoreKit.framework"
+  install_framework "Pods-Stocksearch/FBSDKLoginKit.framework"
+  install_framework "Pods-Stocksearch/FBSDKShareKit.framework"
   install_framework "Pods-Stocksearch/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Stocksearch/Alamofire.framework"
+  install_framework "Pods-Stocksearch/Bolts.framework"
   install_framework "Pods-Stocksearch/CCAutocomplete.framework"
+  install_framework "Pods-Stocksearch/FBSDKCoreKit.framework"
+  install_framework "Pods-Stocksearch/FBSDKLoginKit.framework"
+  install_framework "Pods-Stocksearch/FBSDKShareKit.framework"
   install_framework "Pods-Stocksearch/SwiftyJSON.framework"
 fi

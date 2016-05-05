@@ -88,6 +88,13 @@ class HistoricalChartViewController: UIViewController, UIWebViewDelegate {
                 destinationVC.transitioningDelegate = self.transitionManager
             }
         }
+        
+        if segue.identifier == "HistoricalToMain" {
+            if let destinationVC = segue.destinationViewController as? ViewController {
+                destinationVC.getFavouriteList()
+                destinationVC.transitioningDelegate = self.transitionManager
+            }
+        }
     }
     
     

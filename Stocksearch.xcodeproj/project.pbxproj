@@ -16,7 +16,6 @@
 		183947951CD5682F0050728B /* StocksearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947941CD5682F0050728B /* StocksearchTests.swift */; };
 		183947A01CD5682F0050728B /* StocksearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839479F1CD5682F0050728B /* StocksearchUITests.swift */; };
 		183947B61CD6A22F0050728B /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947B51CD6A22F0050728B /* Countries.swift */; };
-		183947B91CD6BD630050728B /* stock.json in Resources */ = {isa = PBXBuildFile; fileRef = 183947B81CD6BD630050728B /* stock.json */; };
 		183947C01CD7FC250050728B /* CurrentStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947BE1CD7FC250050728B /* CurrentStockViewController.swift */; };
 		183947C31CD84EE90050728B /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947C21CD84EE90050728B /* TransitionManager.swift */; };
 		183947C51CD8735F0050728B /* HistoricalChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947C41CD8735F0050728B /* HistoricalChartViewController.swift */; };
@@ -37,8 +36,10 @@
 		183947E61CDAFCAE0050728B /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947E51CDAFCAE0050728B /* SwiftData.swift */; };
 		183947E91CDAFF010050728B /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 183947E71CDAFF010050728B /* libsqlite3.0.tbd */; };
 		183947EA1CDAFF010050728B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 183947E81CDAFF010050728B /* libsqlite3.tbd */; };
-		183947ED1CDB0CF10050728B /* YQDataMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183947EC1CDB0CF10050728B /* YQDataMediator.swift */; };
-		183947EF1CDB0EB10050728B /* SwiftData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 183947EE1CDB0EB10050728B /* SwiftData.sqlite */; };
+		183947F41CDBC3110050728B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183947F01CDBC3110050728B /* Bolts.framework */; };
+		183947F51CDBC3110050728B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183947F11CDBC3110050728B /* FBSDKCoreKit.framework */; };
+		183947F61CDBC3110050728B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183947F21CDBC3110050728B /* FBSDKLoginKit.framework */; };
+		183947F71CDBC3110050728B /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183947F31CDBC3110050728B /* FBSDKShareKit.framework */; };
 		B8CD1500FB871CC60B6E24B2 /* Pods_Stocksearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79417AE527BDE1C26C2C1D7A /* Pods_Stocksearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +76,6 @@
 		1839479F1CD5682F0050728B /* StocksearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksearchUITests.swift; sourceTree = "<group>"; };
 		183947A11CD5682F0050728B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		183947B51CD6A22F0050728B /* Countries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
-		183947B81CD6BD630050728B /* stock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stock.json; sourceTree = "<group>"; };
 		183947BE1CD7FC250050728B /* CurrentStockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentStockViewController.swift; sourceTree = "<group>"; };
 		183947C21CD84EE90050728B /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		183947C41CD8735F0050728B /* HistoricalChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalChartViewController.swift; sourceTree = "<group>"; };
@@ -97,8 +97,10 @@
 		183947E71CDAFF010050728B /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		183947E81CDAFF010050728B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		183947EB1CDB009E0050728B /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Stocksearch/Bridging-Header.h"; sourceTree = "<group>"; };
-		183947EC1CDB0CF10050728B /* YQDataMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDataMediator.swift; sourceTree = "<group>"; };
-		183947EE1CDB0EB10050728B /* SwiftData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SwiftData.sqlite; sourceTree = "<group>"; };
+		183947F01CDBC3110050728B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../FacebookSDKs-iOS-20160412/Bolts.framework"; sourceTree = "<group>"; };
+		183947F11CDBC3110050728B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../FacebookSDKs-iOS-20160412/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		183947F21CDBC3110050728B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../FacebookSDKs-iOS-20160412/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		183947F31CDBC3110050728B /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../FacebookSDKs-iOS-20160412/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		79417AE527BDE1C26C2C1D7A /* Pods_Stocksearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stocksearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83A71733F29587AA2F94A186 /* Pods-Stocksearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stocksearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stocksearch/Pods-Stocksearch.debug.xcconfig"; sourceTree = "<group>"; };
 		8E1D6EC368A9A7182FC4C1D7 /* Pods-Stocksearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stocksearch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stocksearch/Pods-Stocksearch.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +111,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183947F41CDBC3110050728B /* Bolts.framework in Frameworks */,
+				183947F51CDBC3110050728B /* FBSDKCoreKit.framework in Frameworks */,
+				183947F61CDBC3110050728B /* FBSDKLoginKit.framework in Frameworks */,
+				183947F71CDBC3110050728B /* FBSDKShareKit.framework in Frameworks */,
 				183947E91CDAFF010050728B /* libsqlite3.0.tbd in Frameworks */,
 				183947EA1CDAFF010050728B /* libsqlite3.tbd in Frameworks */,
 				B8CD1500FB871CC60B6E24B2 /* Pods_Stocksearch.framework in Frameworks */,
@@ -159,11 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				183947D31CD9694E0050728B /* CurrentStockCell.swift */,
-				183947B81CD6BD630050728B /* stock.json */,
 				1839477C1CD5682F0050728B /* AppDelegate.swift */,
 				1839477E1CD5682F0050728B /* ViewController.swift */,
-				183947EC1CDB0CF10050728B /* YQDataMediator.swift */,
-				183947EE1CDB0EB10050728B /* SwiftData.sqlite */,
 				183947801CD5682F0050728B /* Main.storyboard */,
 				183947E31CDAC1FC0050728B /* FavouriteTableViewCell.swift */,
 				183947E11CDAB17D0050728B /* Refresh.png */,
@@ -212,6 +215,10 @@
 		F2ECDDA94C42F63936567B47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				183947F01CDBC3110050728B /* Bolts.framework */,
+				183947F11CDBC3110050728B /* FBSDKCoreKit.framework */,
+				183947F21CDBC3110050728B /* FBSDKLoginKit.framework */,
+				183947F31CDBC3110050728B /* FBSDKShareKit.framework */,
 				183947E71CDAFF010050728B /* libsqlite3.0.tbd */,
 				183947E81CDAFF010050728B /* libsqlite3.tbd */,
 				79417AE527BDE1C26C2C1D7A /* Pods_Stocksearch.framework */,
@@ -339,7 +346,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1839478A1CD5682F0050728B /* LaunchScreen.storyboard in Resources */,
-				183947EF1CDB0EB10050728B /* SwiftData.sqlite in Resources */,
 				183947DE1CDA768D0050728B /* html.html in Resources */,
 				183947871CD5682F0050728B /* Assets.xcassets in Resources */,
 				183947D91CD9CA5F0050728B /* Down-52.png in Resources */,
@@ -348,7 +354,6 @@
 				183947DA1CD9CA5F0050728B /* Up-52.png in Resources */,
 				183947CE1CD92CED0050728B /* Star-untapped.png in Resources */,
 				183947DC1CDA75BF0050728B /* Javascript.js in Resources */,
-				183947B91CD6BD630050728B /* stock.json in Resources */,
 				183947CA1CD924BD0050728B /* Facebook-48.png in Resources */,
 				183947E21CDAB17D0050728B /* Refresh.png in Resources */,
 			);
@@ -426,7 +431,6 @@
 				183947C51CD8735F0050728B /* HistoricalChartViewController.swift in Sources */,
 				183947C31CD84EE90050728B /* TransitionManager.swift in Sources */,
 				183947E01CDA94170050728B /* NewsTableViewCell.swift in Sources */,
-				183947ED1CDB0CF10050728B /* YQDataMediator.swift in Sources */,
 				1839477F1CD5682F0050728B /* ViewController.swift in Sources */,
 				183947C01CD7FC250050728B /* CurrentStockViewController.swift in Sources */,
 				183947E61CDAFCAE0050728B /* SwiftData.swift in Sources */,

@@ -10,6 +10,7 @@
 #define swiftdata_test_Bridging_Header_h
 
 #import "sqlite3.h"
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 #endif
 

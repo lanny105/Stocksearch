@@ -9,6 +9,8 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
+import FBSDKCoreKit
+import FBSDKShareKit
 
 
 
@@ -24,13 +26,21 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
     
     var isFirstLoad: Bool = true
     
+    let button : FBSDKShareButton = FBSDKShareButton()
+    
+    
     @IBOutlet weak var NavigationItem: UINavigationItem!
+    
+    
     
     @IBOutlet weak var CurrentButton: UIButton!
     
     
+    @IBOutlet weak var FBbutton: UIButton!
     
-    
+    @IBAction func ShareFB(sender: UIButton) {
+        button.sendActionsForControlEvents(.TouchUpInside)
+    }
 
     
     
@@ -177,6 +187,10 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         
     }
     
+
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -189,7 +203,7 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         
         prepareStockJson()
         StockTableView.allowsSelection  = false;
-        
+        initFB()
         if favouristList.indexOf(Symbol) != nil {
             
             
@@ -239,8 +253,8 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         
         if segue.identifier == "CurrentToMain" {
             if let destinationVC = segue.destinationViewController as? ViewController {
+                destinationVC.getFavouriteList()
                 destinationVC.transitioningDelegate = self.transitionManager
-                destinationVC.FavouriteTableView.reloadData()
             }
         }
     }
@@ -256,7 +270,21 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
     }
 
     
+    
+    
+    func initFB() {
 
+        let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
+        content.contentURL = NSURL(string: "http://finance.yahoo.com/q?s=" + Symbol)
+        content.contentTitle = "Current Stock Price of " + StockJson["Name"].rawString()! + " is $" + rounded(StockJson["LastPrice"].numberValue)
+        content.contentDescription = "Stock Information of " + StockJson["Name"].rawString()! + "(" + Symbol + ")"
+        content.imageURL = NSURL(string: "https://chart.finance.yahoo.com/t?s=" + Symbol + "&lang=en-US&width=300&height=250")
+        
+        
+        button.shareContent = content
+        
+//        self.view.addSubview(button)
+    }
 
     
     

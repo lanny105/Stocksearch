@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stocksearch/CurrentStockViewController.swift"
-            timestampString = "484123539.043407"
+            timestampString = "484171841.88533"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "StarStock(_:)"
             landmarkType = "5">
          </BreakpointContent>
