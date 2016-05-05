@@ -12,12 +12,16 @@ import UIKit
 import CCAutocomplete
 import SwiftyJSON
 import Alamofire
+import SpriteKit
 
 
 
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    var timer: NSTimer!
+    
+    
     @IBOutlet weak var refresh: UIButton!
     var refreshImage:UIImage!
     
@@ -29,6 +33,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     @IBOutlet weak var FavouriteTableView: UITableView!
+    
+    
+    @IBOutlet weak var Myswitch: UISwitch!
+    
+    @IBAction func Switched(sender: AnyObject) {
+        
+        if Myswitch.on {
+            timer = NSTimer.scheduledTimerWithTimeInterval(5, target:self, selector: Selector("getFavouriteList"), userInfo: nil, repeats: true)
+        }
+        
+        else {
+            timer.invalidate()
+        }
+        
+    }
+    
+    
+    
+    
     
     var isFirstLoad: Bool = true
     
@@ -110,6 +133,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func getSumbolList() -> [String] {
         
         
+        
         var SymbolList: [String] = []
         
         
@@ -158,9 +182,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
+    
+//    var timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("getFavouriteList"), userInfo: nil, repeats: true)
+
+    
+    
     func getFavouriteList() {
         
 //        StockJson = self.Lookupjson["market"]
+        var actInd : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
+        actInd.center = self.FavouriteTableView.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        view.addSubview(actInd)
+        actInd.startAnimating()
         
         self.JSONlist = [JSON](count: favouristList.count, repeatedValue: JSON.null)
 
@@ -202,7 +237,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         
                         if count2 == favouristList.count {
                             self.FavouriteTableView.reloadData()
-                            print("load了！")
+//                            print("load了！")
+                            actInd.stopAnimating()
                         }
                         
                         
@@ -482,8 +518,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.MarketCap.text = "Market Cap: " + str
         cell.Symbol.text = JSONlist[indexPath.row]["Symbol"].rawString()!
         
-        print(cell.Symbol.text)
-        print(indexPath.row)
+//        print(cell.Symbol.text)
+//        print(indexPath.row)
         
         cell.StockPrice.text = "$" + rounded(JSONlist[indexPath.row]["LastPrice"].numberValue)
 

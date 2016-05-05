@@ -84,11 +84,18 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
             
         }
         
+//        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[0] as? ViewController
+//        viewController?.FavouriteTableView.reloadData()
+        
         
         print(favouristList)
         
         
     }
+    
+    
+    
+    
     
     
     func rounded(a:NSNumber) -> String {
@@ -198,6 +205,8 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -227,6 +236,13 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
 //                destinationVC.Symbol = Symbol
             }
         }
+        
+        if segue.identifier == "CurrentToMain" {
+            if let destinationVC = segue.destinationViewController as? ViewController {
+                destinationVC.transitioningDelegate = self.transitionManager
+                destinationVC.FavouriteTableView.reloadData()
+            }
+        }
     }
     
     
@@ -238,6 +254,8 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
     @IBAction func SwitchToNews(sender: UIButton) {
         self.performSegueWithIdentifier("CurrentToNews", sender: self)
     }
+
+    
 
 
     

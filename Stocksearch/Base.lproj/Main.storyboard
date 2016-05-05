@@ -40,6 +40,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dSA-RO-fGA">
                                 <rect key="frame" x="477" y="239" width="51" height="31"/>
+                                <connections>
+                                    <action selector="Switched:" destination="BYZ-38-t0r" eventType="valueChanged" id="cju-os-o1P"/>
+                                </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zI-z8-V8i">
                                 <rect key="frame" x="239" y="181" width="123" height="30"/>
@@ -172,6 +175,7 @@
                         <outlet property="AutocompleteContainerView" destination="PZq-0a-Dmr" id="RWJ-Xm-CKu"/>
                         <outlet property="FavouriteTableView" destination="cJL-5v-k83" id="gek-bX-ryE"/>
                         <outlet property="LblSelectedStockName" destination="TII-kE-urG" id="A6o-bL-yi6"/>
+                        <outlet property="Myswitch" destination="dSA-RO-fGA" id="cm6-2P-qHf"/>
                         <outlet property="Stockinput" destination="1Q2-6T-eda" id="wnz-Tw-3eL"/>
                         <outlet property="refresh" destination="tOl-Id-Fhz" id="59y-ZH-gOH"/>
                         <segue destination="uJY-dN-5SL" kind="show" identifier="SegueToCurrentStockControllerView" id="geh-Ss-cvu"/>
@@ -213,7 +217,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="&lt;Back"/>
                                                 <connections>
-                                                    <segue destination="Ukg-Rm-MBi" kind="unwind" unwindAction="unwindToViewController:" id="Wxz-eb-yxV"/>
+                                                    <segue destination="Ukg-Rm-MBi" kind="unwind" identifier="CurrentToMain" unwindAction="unwindToViewController:" id="Wxz-eb-yxV"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
