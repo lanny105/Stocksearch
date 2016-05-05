@@ -18,7 +18,7 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
     
     
     var Symboljson:JSON!
-    var Symbol:String!
+//    var Symbol:String!
     var Parajson:JSON!
     var transitionManager: TransitionManager!
     
@@ -27,6 +27,11 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var NavigationItem: UINavigationItem!
     
     @IBOutlet weak var CurrentButton: UIButton!
+    
+    
+    
+    
+
     
     
     var flag1:Int = 0
@@ -40,6 +45,14 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var StockTableView: UITableView!
     
+    
+    
+    @IBAction func StarStock(sender: UIButton) {
+        
+        
+//        StockTableView.reloadData()
+        
+    }
     
     
     func rounded(a:NSNumber) -> String {
@@ -130,7 +143,7 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         //        let transitionManager = TransitionManager()
         CurrentButton.backgroundColor = UIColor.blueColor()
         CurrentButton.titleLabel?.textColor = UIColor.whiteColor()
-        self.NavigationItem.title = self.Symbol
+        self.NavigationItem.title = Symbol
         
         prepareStockJson()
         StockTableView.allowsSelection  = false;
@@ -157,7 +170,7 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         if segue.identifier == "CurrentToHistorical" {
             if let destinationVC = segue.destinationViewController as? HistoricalChartViewController {
                 destinationVC.transitioningDelegate = self.transitionManager
-                destinationVC.Symbol = self.Symbol
+//                destinationVC.Symbol = Symbol
             
             }
         }
@@ -165,7 +178,7 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         if segue.identifier == "CurrentToNews" {
             if let destinationVC = segue.destinationViewController as? NewsFeedViewController {
                 destinationVC.transitioningDelegate = self.transitionManager
-                destinationVC.Symbol = self.Symbol
+//                destinationVC.Symbol = Symbol
             }
         }
         
@@ -238,7 +251,7 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
 //            StockTableView. = 300.0
             let cell = tableView.dequeueReusableCellWithIdentifier("cell2", forIndexPath: indexPath) as! CurrentStockImageViewCell
             
-            if let url = NSURL(string: "https://chart.finance.yahoo.com/t?s=" + self.Symbol + "&lang=en-US&width=300&height=250") {
+            if let url = NSURL(string: "https://chart.finance.yahoo.com/t?s=" + Symbol + "&lang=en-US&width=300&height=250") {
                 if let data = NSData(contentsOfURL: url) {
                     cell.StockImage.image = UIImage(data: data)                }
             }

@@ -14,7 +14,7 @@ import JavaScriptCore
 class HistoricalChartViewController: UIViewController, UIWebViewDelegate {
 
     var Symboljson:JSON!
-    var Symbol:String!
+//    var Symbol:String!
     var Parajson:JSON!
     var transitionManager: TransitionManager!
     
@@ -35,7 +35,7 @@ class HistoricalChartViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         self.transitionManager = TransitionManager()
         
-        self.NavigationItem.title = self.Symbol
+        self.NavigationItem.title = Symbol
         
         
         HistoricalButton.backgroundColor = UIColor.blueColor()
@@ -57,7 +57,7 @@ class HistoricalChartViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidFinishLoad(webView: UIWebView) {
 
-        ChartWebView.stringByEvaluatingJavaScriptFromString("hello(" + "\"" + String(self.Symbol) + "\");")
+        ChartWebView.stringByEvaluatingJavaScriptFromString("hello(" + "\"" + String(Symbol) + "\");")
     }
     
     
@@ -78,7 +78,7 @@ class HistoricalChartViewController: UIViewController, UIWebViewDelegate {
         if segue.identifier == "HistoricalToCurrent" {
             if let destinationVC = segue.destinationViewController as? CurrentStockViewController {
                 destinationVC.transitioningDelegate = self.transitionManager
-                destinationVC.Symbol = self.Symbol
+                
             }
         }
         
@@ -86,7 +86,6 @@ class HistoricalChartViewController: UIViewController, UIWebViewDelegate {
         if segue.identifier == "HistoricalToNews" {
             if let destinationVC = segue.destinationViewController as? NewsFeedViewController {
                 destinationVC.transitioningDelegate = self.transitionManager
-                destinationVC.Symbol = self.Symbol
             }
         }
     }

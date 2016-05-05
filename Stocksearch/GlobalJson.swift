@@ -15,6 +15,8 @@ var HighchartJson:JSON! = []
 
 var NewsJson:JSON! = []
 
+var Symbol:String = ""
+
 
 
 

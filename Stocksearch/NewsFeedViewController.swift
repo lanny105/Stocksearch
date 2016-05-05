@@ -12,7 +12,6 @@ import Alamofire
 class NewsFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var Symboljson:JSON!
-    var Symbol:String!
     var Parajson:JSON!
     var transitionManager: TransitionManager!
     
@@ -36,7 +35,7 @@ class NewsFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         self.transitionManager = TransitionManager()
         
-        self.NavigationItem.title = self.Symbol
+        self.NavigationItem.title = Symbol
         
         parsejson()
 
@@ -61,7 +60,6 @@ class NewsFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         if segue.identifier == "NewsToCurrent" {
             if let destinationVC = segue.destinationViewController as? CurrentStockViewController {
                 destinationVC.transitioningDelegate = self.transitionManager
-                destinationVC.Symbol = self.Symbol
             }
         }
         
@@ -69,7 +67,6 @@ class NewsFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         if segue.identifier == "NewsToHistorical" {
             if let destinationVC = segue.destinationViewController as? HistoricalChartViewController {
                 destinationVC.transitioningDelegate = self.transitionManager
-                destinationVC.Symbol = self.Symbol
             }
         }
     }
@@ -122,14 +119,15 @@ class NewsFeedViewController: UIViewController, UITableViewDataSource, UITableVi
 //        
 //    }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if let url = NSURL(string: urls[indexPath.row]) {
             UIApplication.sharedApplication().openURL(url)
         }
-        
     }
     
+
     
     /*
     // MARK: - Navigation
