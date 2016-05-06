@@ -15,7 +15,7 @@ import FBSDKShareKit
 
 
 
-class CurrentStockViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class CurrentStockViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FBSDKSharingDelegate{
 
     
     
@@ -39,7 +39,8 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var FBbutton: UIButton!
     
     @IBAction func ShareFB(sender: UIButton) {
-        button.sendActionsForControlEvents(.TouchUpInside)
+//        button.sendActionsForControlEvents(.TouchUpInside)
+        initFB()
     }
 
     
@@ -93,14 +94,6 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
             favouristList.removeAtIndex(favouristList.indexOf(Symbol)!)
             
         }
-        
-//        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[0] as? ViewController
-//        viewController?.FavouriteTableView.reloadData()
-        
-        
-        print(favouristList)
-        
-        
     }
     
     
@@ -203,7 +196,7 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         
         prepareStockJson()
         StockTableView.allowsSelection  = false;
-        initFB()
+//        initFB()
         if favouristList.indexOf(Symbol) != nil {
             
             
@@ -274,14 +267,29 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
     
     func initFB() {
 
+        let dialog = FBSDKShareDialog()
+        
+        dialog.delegate = self
+        dialog.mode = FBSDKShareDialogMode.FeedBrowser
+        dialog.fromViewController = self
+        dialog.shareContent = FBSDKShareLinkContent()
+        
+        
+        
+        
         let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
         content.contentURL = NSURL(string: "http://finance.yahoo.com/q?s=" + Symbol)
         content.contentTitle = "Current Stock Price of " + StockJson["Name"].rawString()! + " is $" + rounded(StockJson["LastPrice"].numberValue)
         content.contentDescription = "Stock Information of " + StockJson["Name"].rawString()! + "(" + Symbol + ")"
         content.imageURL = NSURL(string: "https://chart.finance.yahoo.com/t?s=" + Symbol + "&lang=en-US&width=300&height=250")
         
+        dialog.shareContent = content
         
-        button.shareContent = content
+        
+        dialog.show()
+//        button.shareContent = content
+        
+        
         
 //        self.view.addSubview(button)
     }
@@ -374,6 +382,27 @@ class CurrentStockViewController: UIViewController, UITableViewDataSource, UITab
         return titles.count+1
     }
     
+    
+    func sharerDidCancel(sharer: FBSDKSharing!) {
+        let alert = UIAlertController(title: "Post Canceled", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {
+        let alert = UIAlertController(title: "Post Failed with Error", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject : AnyObject]!) {
+        if(results["postId"]==nil){
+            self.sharerDidCancel(sharer)
+        }
+        else{
+            let alert = UIAlertController(title: "Post Successfully", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
     
     
     

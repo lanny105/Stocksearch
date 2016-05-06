@@ -40,7 +40,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func Switched(sender: AnyObject) {
         
         if Myswitch.on {
-            timer = NSTimer.scheduledTimerWithTimeInterval(10, target:self, selector: Selector("getFavouriteList"), userInfo: nil, repeats: true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(10, target:self, selector: #selector(ViewController.getFavouriteList), userInfo: nil, repeats: true)
         }
         
         else {
@@ -50,25 +50,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
-    
-    
-    
     var isFirstLoad: Bool = true
-    
-//    let countriesList = countries
-    
     
     var tapAutocomplete = false
     
     
     var Lookupjson:JSON!
-//    var Symbol:String!
+
     
     var transitionManager: TransitionManager!
     
-    
-//    var Symbols:[String] = ["AAPL","GOOGL","MSFT"]
-    
+
     
     
     var StockPrices:[String] = []
@@ -144,7 +136,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var SymbolList: [String] = []
         
         
-        var (resultSet, err) = SD.executeQuery("select Symbol from favoritelist;")
+        let (resultSet, err) = SD.executeQuery("select Symbol from favoritelist;")
         
         if err != nil {
             //there was an error during the query, handle it here
@@ -175,9 +167,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if segue.identifier == "SegueToCurrentStockControllerView" {
             if let destinationVC = segue.destinationViewController as? CurrentStockViewController {
                 destinationVC.transitioningDelegate = self.transitionManager
-//                destinationVC.Symboljson = self.Lookupjson
-//                destinationVC.Symbol = self.Symbol
-                
                 
             }
         }
@@ -196,6 +185,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func getFavouriteList() {
         
+        
+        if favouristList.count == 0 {
+            self.FavouriteTableView.reloadData()
+            return
+        }
+        
 //        StockJson = self.Lookupjson["market"]
         var actInd : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(115,390, 150, 150)) as UIActivityIndicatorView
 //        actInd.center = self.view.center
@@ -207,6 +202,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         actInd.color = UIColor(red: 46.0/255, green: 204.0/255, blue: 113.0/255, alpha: 1.0)
         view.addSubview(actInd)
         
+        actInd.startAnimating()
         
         self.JSONlist = [JSON](count: favouristList.count, repeatedValue: JSON.null)
 
@@ -217,19 +213,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             someDict[sym] = count
             count+=1
         }
-        
-//        print(someDict)
-        
+
         
         var count2 = 0
         
-        
-        
-        
         for sym in favouristList {
-            actInd.startAnimating()
-
-            
             Alamofire.request(.GET, "http://www.mobileserver-1300.appspot.com/index.php", parameters: ["Symbol": sym])
                 .responseJSON { response in
                     
@@ -239,14 +227,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         if let value = response.result.value {
                             let temp = JSON(value)
                             count2+=1
-                            //
                             
                             self.JSONlist[self.someDict[temp["Symbol"].rawString()!]!] = temp["market"]
                         }
                         
                         if count2 == favouristList.count {
                             self.FavouriteTableView.reloadData()
-//                            print(self.JSONlist)
                             actInd.stopAnimating()
                         }
                         
@@ -257,7 +243,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
         }
-        self.FavouriteTableView.reloadData()
+        
         
     }
     
@@ -265,8 +251,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func move(input: String) {
 
-        
-        
         Alamofire.request(.GET, "http://www.mobileserver-1300.appspot.com/index.php", parameters: ["Symbol": input])
             .responseJSON { response in
                 
@@ -294,13 +278,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     }
     
-    
-    
-    
-    
-    
-    
-    
     @IBAction func Getquote(sender: UIButton) {
         
         
@@ -317,8 +294,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             // Add Actions
             alertController.addAction(yesAction)
-            
-            // Present Alert Controller
+
             self.presentViewController(alertController, animated: true, completion: nil)
             
             return
@@ -356,7 +332,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                             print(error)
                         }
                     }
-                
                 
                 return
             }
@@ -405,9 +380,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                             }
                             
                             if validInput == subJson["Symbol"].string! + "-" + subJson["Name"].string! + "-"+subJson["Exchange"].string! || validInput ==  subJson["Symbol"].string! {
-                                print(self.Lookupjson)
+//                                print(self.Lookupjson)
                                 
-                                //还要大处理！！！
                                 
                                 self.performSegueWithIdentifier("SegueToCurrentStockControllerView", sender: self)
                                 return
@@ -435,7 +409,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     }
                     
                 case .Failure(let error):
-                    print("this is err")
                     print(error)
                 }
                 
@@ -461,7 +434,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             let str = "delete from favoritelist where Symbol = '" + favouristList[indexPath.row] + "';"
             SD.executeQuery(str)
-            
             
             favouristList.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
@@ -491,17 +463,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell4", forIndexPath: indexPath) as! FavouriteTableViewCell
         
-        
-        if JSONlist.count < favouristList.count {
-            
-//            print("xixi")
-            cell.Symbol.text = favouristList[indexPath.row]
-            return cell
-            
-        }
-//        print("hehe")
-//
-//        
+       
         if Double(JSONlist[indexPath.row]["ChangePercent"].numberValue) < 0 {
             cell.Change.backgroundColor = UIColor.redColor()
             cell.Change.textColor = UIColor.whiteColor()
@@ -532,9 +494,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.MarketCap.text = "Market Cap: " + str
         cell.Symbol.text = JSONlist[indexPath.row]["Symbol"].rawString()!
         
-//        print(cell.Symbol.text)
-//        print(indexPath.row)
-        
         cell.StockPrice.text = "$" + rounded(JSONlist[indexPath.row]["LastPrice"].numberValue)
 
         
@@ -544,10 +503,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row)
         
-        Symbol = favouristList[indexPath.row]
-        move(Symbol)
+        if indexPath.row < favouristList.count {
+            Symbol = favouristList[indexPath.row]
+            move(Symbol)
+        }
     }
     
     
