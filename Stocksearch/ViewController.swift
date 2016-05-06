@@ -522,7 +522,7 @@ extension ViewController: AutocompleteDelegate {
         return self.Stockinput
     }
     func autoCompleteThreshold(textField: UITextField) -> Int {
-        return 0
+        return 2
     }
     
     
